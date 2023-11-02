@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="bg-image">
+            <div class="info-container">
+                <div class="time-container">
+                    <p id="hour">00</p>
+                    <p id="colon">:</p>
+                    <p id="minute">00</p>
+                  </div>                  
+
+                <div class="date-container">
+                    <p id="date-alpha-day"></p><span id="comma">,</span> <!--"Sunday,"-->
+                    <p id="date-alpha-month"></p><span id="space"></span>  <!--"January"-->
+                    <p id="date-num-day"></p><span id="comma">,</span>  <!--"1,"-->
+                    <p id="date-num-year"></p>  <!--"2023"-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script> // Time function and display
+        function updateTime() {
+        const timeContainer = document.querySelector('.time-container');
+        if (timeContainer) {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+
+            const hourElement = document.getElementById('hour');
+            const colonElement = document.getElementById('colon');
+            const minuteElement = document.getElementById('minute');
+
+            if (hourElement && colonElement && minuteElement) {
+            hourElement.textContent = hours;
+            minuteElement.textContent = minutes;
+            }
+        }
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+    <script> // Date function and display
+        function updateDate() {
+        const dateContainer = document.querySelector('.date-container');
+
+        if (dateContainer) {
+            const now = new Date();
+            const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 
+                                'Thursday', 'Friday', 'Saturday'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
+                            'August', 'September', 'October', 'November', 'December'];
+            const dayOfWeek = daysOfWeek[now.getDay()];
+            const dayOfMonth = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+            
+            document.getElementById('date-alpha-day').textContent = `${dayOfWeek}`; // Alphabetical day
+            document.getElementById('date-alpha-month').textContent = `${month}`;  // Alphabetical month
+            document.getElementById('date-num-day').textContent = `${dayOfMonth}`;  // Numerical day
+            document.getElementById('date-num-year').textContent = `${year}`;  // Numerical year
+        }
+        }
+        updateDate();
+    </script>
+</body>
+</html>

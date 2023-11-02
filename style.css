@@ -1,0 +1,59 @@
+:root {
+    --time-font-size: 45px
+}
+body, .main-container, .bg-image {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background-image: url('images/test.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.info-container {
+    background-color: rgba(0, 0, 0, 0.496);
+    max-width: fit-content;
+    border-radius: 20px;
+    padding: 15px;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    margin: auto;
+    margin-bottom: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-50);
+    width: 100%;
+  }
+  
+p, span {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+.time-container {
+    display: flex;
+    justify-content: center;
+    font-size: var(--time-font-size);
+} 
+#colon {animation: blink 2s infinite;}
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+.date-container {display: flex;}
+#date {font-size: calc(var(--time-font-size) / 2.5);} /* Takes font size of #time and divides it by value */
+#comma, #space{margin-right: 5px;}
